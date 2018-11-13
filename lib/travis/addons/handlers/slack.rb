@@ -7,7 +7,7 @@ module Travis
       class Slack < Base
         include Handlers::Task
 
-        EVENTS = 'build:finished'
+        EVENTS = ['build:started', 'build:finished']
 
         def handle?
           enabled?(:slack) && targets.present? && config.send_on?(:slack, action)
@@ -31,4 +31,3 @@ module Travis
     end
   end
 end
-
